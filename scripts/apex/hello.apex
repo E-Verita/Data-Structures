@@ -9,8 +9,11 @@ string tempvar = 'Everita';
 System.debug('Hello World!');
 System.debug('My name is ' + tempvar);
 
+----------------------------------------------------------------
+------------------------DATA STRUCTURES-------------------------
+----------------------------------------------------------------
 
---------------------DATA STRUCTURES---------------------
+
 
 ----LISTS-----
 
@@ -167,3 +170,82 @@ List<Integer> integers = new List<Integer>{1,25,85,14,10,39,2,0};
 integers.set(2,45);
 System.debug(integers);
 21:12:53.17 (18833106)|USER_DEBUG|[3]|DEBUG|(1, 25, 45, 14, 10, 39, 2, 0)
+
+
+Sort a list of SObject records based on field value
+
+List <Account> accounts = new List <Account>();
+accounts.add(new Account (name='Hooli', NumberOfEmployees = 50, AnnualRevenue = 10000
+));
+
+accounts.add(new Account (name = 'Pied Piper', NumberOfEmployees = 20, AnnualRevenue = 5000
+));
+
+accounts.add(new Account (name ='Aviato', NumberOfEmployees = 15000, AnnualRevenue = 15000
+));
+insert accounts;
+
+List <Account> accounts2 = [SELECT Name, NumberOfEmployees, AnnualRevenue FROM Account];
+System.debug('Initial list of accounts' + accounts);
+System.debug('2nd list of accounts' + accounts2);
+
+Custom comparator
+
+class Employee{
+    Integer id;
+    String name;
+
+    public Employee(Integer Id, String name){
+        this id=id;
+        this.name=name;
+    }
+
+    List <Employee> employees = new List<Employee>();
+    employees.add(new Employee (1, 'Richard'));
+    employees.add(new Employee (2, 'Danesh'));
+    employees.add(new Employee (3, 'Monica'));
+    employees.add(new Employee (4, 'Erlich'));
+
+    System.debug('Initial list:' + employees );
+    
+    System.debug('Sorting employees...')
+
+    /* employees.sort() will not work - 2 fields, SF cannot identify which field to sort by
+    Need to implement comparable interface */
+
+class Employee implements Comparable{
+
+    Integer id;
+    String name;
+
+    public Employee(Integer Id, String name){
+        this id=id;
+        this.name=name;
+    }
+
+    Integer compareTo(Object anotherObject){
+        Employee secondEmployee = (Employee) anotherObject;
+
+        if (id < secondEmpoyee.id){
+            return -1;
+        } else if (id > secondEmployee.id){
+            return 1;
+        }
+        return 0;
+    }
+}
+
+    List <Employee> employees = new List<Employee>();
+    employees.add(new Employee (3, 'Monica'));
+    employees.add(new Employee (4, 'Erlich'));
+    employees.add(new Employee (2, 'Danesh'));
+    employees.add(new Employee (1, 'Richard'));
+
+    System.debug('Initial list:' + employees );
+    
+    System.debug('Sorting employees...');
+
+    employees.sort();
+    System.debug('Sorted list: ' + employees);
+
+
