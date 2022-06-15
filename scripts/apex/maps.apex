@@ -196,31 +196,3 @@ System.debug('Total elements inside a Map: ' + employeeMap.size());
 13:07:02.23 (24724616)|USER_DEBUG|[9]|DEBUG|{1=Monica, 2=Richard, 3=Gilfoyle, 4=Elrich, 5=Greg, 6=Monica}
 13:07:02.23 (24859623)|USER_DEBUG|[10]|DEBUG|Total elements inside a Map: 6
 
-
-
-
---------------------------   keySet()   ---------------------------
-
-
-
-
-
-
-
-
-
-
---------------------------   keySet()   ---------------------------
-
-
-
-
-
-
-
-
-
-
---------------------------   keySet()   ---------------------------
-
-
